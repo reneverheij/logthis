@@ -1,11 +1,14 @@
 package com.ibm.stuff.logthis;
 
 import java.io.IOException;
-import javax.servlet.ServletConfig;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Servlet implementation class LogServlet
@@ -13,20 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 public class LogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LogServlet() {
-        super();
-    }
-
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -34,7 +23,8 @@ public class LogServlet extends HttpServlet {
 		throws ServletException, IOException 
 	{
 		// 
-		System.out.println(request.getParameter("logstring"));
+		final Logger logger = LogManager.getLogger(LogServlet.class);
+		logger.info(request.getParameter("logstring"));
 
 		// Go back to index.jsp.
 		response.sendRedirect(request.getContextPath());
