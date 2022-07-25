@@ -2,6 +2,7 @@ package com.ibm.stuff.logthis;
 
 import java.io.IOException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,21 @@ public class LogServlet extends HttpServlet {
 
 		// Go back to index.jsp.
 		response.sendRedirect(request.getContextPath());
+	}
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+		final Logger logger = LogManager.getLogger(LogServlet.class);
+		logger.info("log4j2: init(config)");
+		System.out.println("stdout: init(config)");
+	}
+
+	@Override
+	public void init() throws ServletException {
+		final Logger logger = LogManager.getLogger(LogServlet.class);
+		logger.info("log4j2: init()");
+		System.out.println("stdout: init()");
 	}
 
 }
