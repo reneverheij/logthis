@@ -32,6 +32,9 @@ public class LogServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath());
 	}
 
+	/**
+	 * @see GenericServlet#init(ServletConfig config)
+	 */
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -40,6 +43,9 @@ public class LogServlet extends HttpServlet {
 		System.out.println("stdout: init(config)");
 	}
 
+	/**
+	 * @see GenericServlet#init()
+	 */
 	@Override
 	public void init() throws ServletException {
 		final Logger logger = LogManager.getLogger(LogServlet.class);
