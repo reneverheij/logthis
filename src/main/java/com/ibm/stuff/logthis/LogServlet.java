@@ -26,6 +26,7 @@ public class LogServlet extends HttpServlet {
 		// 
 		final Logger logger = LogManager.getLogger(LogServlet.class);
 		logger.info(request.getParameter("logstring"));
+		System.out.println(request.getParameter("logstring"));
 
 		// Go back to index.jsp.
 		response.sendRedirect(request.getContextPath());
